@@ -5,9 +5,10 @@ services:
     build:
       context: .
     container_name: django_app
-    command: python3 manage.py makemigrations
-    command: python3 manage.py migrate
-    command: python3 manage.py runserver --noreload 0.0.0.0:8000
+    command: >
+      sh -c "python3 manage.py makemigrations && 
+             python3 manage.py migrate && 
+             python3 manage.py runserver --noreload 0.0.0.0:8000"
     volumes:
       - .:/app
     ports:
